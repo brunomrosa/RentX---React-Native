@@ -1,15 +1,14 @@
-import SpeedSvg from "../assets/speed.svg";
-import AccelerationSvg from "../assets/acceleration.svg";
-import ForceSvg from "../assets/force.svg";
-import GasolineSvg from "../assets/gasoline.svg";
-import EnergySvg from "../assets/energy.svg";
-import HybridSvg from "../assets/hybrid.svg";
-import ExchangeSvg from "../assets/exchange.svg";
-import PeopleSvg from "../assets/people.svg";
-import CarSvg from "../assets/car.svg";
+import SpeedSvg from '../assets/speed.svg';
+import AccelerationSvg from '../assets/acceleration.svg';
+import ForceSvg from '../assets/force.svg';
+import GasolineSvg from '../assets/gasoline.svg';
+import EnergySvg from '../assets/energy.svg';
+import HybridSvg from '../assets/hybrid.svg';
+import ExchangeSvg from '../assets/exchange.svg';
+import PeopleSvg from '../assets/people.svg';
+import CarSvg from '../assets/car.svg';
 
 export const getCarAccessoryIcon = (type: string) => {
- 
   const icon: { [key: string]: any } = {
     speed: SpeedSvg,
     acceleration: AccelerationSvg,
@@ -19,8 +18,7 @@ export const getCarAccessoryIcon = (type: string) => {
     hybrid_motor: HybridSvg,
     exchange: ExchangeSvg,
     seats: PeopleSvg,
-  
-  }
+  };
 
-  return icon[type] || CarSvg; 
-}
+  return icon[type] || CarSvg;
+};

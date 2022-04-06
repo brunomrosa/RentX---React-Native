@@ -1,8 +1,10 @@
-import React, { useState } from "react";
-import { StatusBar } from "react-native";
+import React, { useState } from 'react';
+import { StatusBar } from 'react-native';
 
-import { BackButton } from "../../components/BackButton";
-import ArrowSvg from "../../assets/arrow.svg";
+import { useNavigation, useRoute } from '@react-navigation/native';
+import { format } from 'date-fns';
+import { BackButton } from '../../components/BackButton';
+import ArrowSvg from '../../assets/arrow.svg';
 
 import {
   Container,
@@ -14,36 +16,25 @@ import {
   DateValue,
   Content,
   Footer,
-} from "./styles";
+} from './styles';
 
-import { Button } from "../../components/Button";
-import { Calendar, DayProps, MarkedDateProps } from "../../components/Calendar";
-import { useNavigation, useRoute } from "@react-navigation/native";
-import { generateInterval } from "../../components/Calendar/generateInterval";
-import { format } from "date-fns";
-import { getPlataformDate } from "../../utils/getPlataformDate";
+import { Button } from '../../components/Button';
+import { Calendar, DayProps, MarkedDateProps } from '../../components/Calendar';
+import { generateInterval } from '../../components/Calendar/generateInterval';
+import { getPlataformDate } from '../../utils/getPlataformDate';
 
-import {
-  ScheduleRouteProp,
-  ScheduleScreenProps,
-} from "../../routes/interfaces";
+import { ScheduleRouteProp, ScheduleScreenProps } from '../../routes/interfaces';
 
 interface RentalPeriod {
   startFormatted: string;
   endFormatted: string;
 }
 
-export const Schedule = () => {
-  const [lastSelectedDate, setLastSelectedDate] = useState<DayProps>(
-    {} as DayProps
-  );
+export function Schedule() {
+  const [lastSelectedDate, setLastSelectedDate] = useState<DayProps>({} as DayProps);
 
-  const [markedDates, setMarkedDates] = useState<MarkedDateProps>(
-    {} as MarkedDateProps
-  );
-  const [rentalPeriod, setRentalPeriod] = useState<RentalPeriod>(
-    {} as RentalPeriod
-  );
+  const [markedDates, setMarkedDates] = useState<MarkedDateProps>({} as MarkedDateProps);
+  const [rentalPeriod, setRentalPeriod] = useState<RentalPeriod>({} as RentalPeriod);
 
   const navigation = useNavigation<ScheduleScreenProps>();
   const route = useRoute<ScheduleRouteProp>();
@@ -51,7 +42,7 @@ export const Schedule = () => {
   const { car } = route.params;
 
   const handleConfirmSchedule = () => {
-    navigation.navigate("SchedulingDetails", {
+    navigation.navigate('SchedulingDetails', {
       car,
       dates: Object.keys(markedDates),
     });
@@ -75,25 +66,21 @@ export const Schedule = () => {
     const endDate = Object.keys(interval)[Object.keys(interval).length - 1];
 
     setRentalPeriod({
-      startFormatted: format(
-        getPlataformDate(new Date(firstDate)),
-        "dd/MM/yyyy"
-      ),
-      endFormatted: format(getPlataformDate(new Date(endDate)), "dd/MM/yyyy"),
+      startFormatted: format(getPlataformDate(new Date(firstDate)), 'dd/MM/yyyy'),
+      endFormatted: format(getPlataformDate(new Date(endDate)), 'dd/MM/yyyy'),
     });
   };
 
   return (
     <Container>
-      <StatusBar
-        barStyle="light-content"
-        backgroundColor="transparent"
-        translucent
-      />
+      <StatusBar barStyle="light-content" backgroundColor="transparent" translucent />
       <Header>
         <BackButton />
         <Title>
-          Escolha uma{"\n"}data de início e{"\n"}fim do aluguel
+          Escolha uma
+          {'\n'}
+          data de início e{'\n'}
+          fim do aluguel
         </Title>
 
         <RentalPeriod>
@@ -128,4 +115,4 @@ export const Schedule = () => {
       </Footer>
     </Container>
   );
-};
+}

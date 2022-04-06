@@ -1,15 +1,11 @@
-import React from "react";
-import {
-  Calendar as CustomCalendar,
-  LocaleConfig,
-  CalendarProps,
-} from "react-native-calendars";
-import { useTheme } from "styled-components";
-import { Feather } from "@expo/vector-icons";
-import { ptBr } from "./localeConfig";
+import React from 'react';
+import { Calendar as CustomCalendar, LocaleConfig, CalendarProps } from 'react-native-calendars';
+import { useTheme } from 'styled-components';
+import { Feather } from '@expo/vector-icons';
+import { ptBr } from './localeConfig';
 
-LocaleConfig.locales["pt-br"] = ptBr;
-LocaleConfig.defaultLocale = "pt-br";
+LocaleConfig.locales['pt-br'] = ptBr;
+LocaleConfig.defaultLocale = 'pt-br';
 
 export interface MarkedDateProps {
   [key: string]: {
@@ -28,16 +24,12 @@ export interface DayProps {
   timestamp: number;
 }
 
-export const Calendar = ({ markedDates, onDayPress }: CalendarProps) => {
+export function Calendar({ markedDates, onDayPress }: CalendarProps) {
   const theme = useTheme();
   return (
     <CustomCalendar
       renderArrow={(direction) => (
-        <Feather
-          size={24}
-          color={theme.colors.text}
-          name={`chevron-${direction}`}
-        />
+        <Feather size={24} color={theme.colors.text} name={`chevron-${direction}`} />
       )}
       headerStyle={{
         backgroundColor: theme.colors.background_secondary,
@@ -64,4 +56,4 @@ export const Calendar = ({ markedDates, onDayPress }: CalendarProps) => {
       minDate={`${new Date()}`}
     />
   );
-};
+}

@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-import { StatusBar, View } from "react-native";
+import { StatusBar, View } from 'react-native';
 
 import Animated, {
   Extrapolate,
@@ -8,11 +8,12 @@ import Animated, {
   useAnimatedScrollHandler,
   useAnimatedStyle,
   useSharedValue,
-} from "react-native-reanimated";
+} from 'react-native-reanimated';
 
-import { BackButton } from "../../components/BackButton";
-import { ImageSlider } from "../../components/ImageSlider";
-import { Accessory } from "../../components/Accessory";
+import { useNavigation, useRoute } from '@react-navigation/native';
+import { BackButton } from '../../components/BackButton';
+import { ImageSlider } from '../../components/ImageSlider';
+import { Accessory } from '../../components/Accessory';
 
 import {
   Container,
@@ -29,17 +30,13 @@ import {
   About,
   Accessories,
   Footer,
-} from "./styles";
-import { Button } from "../../components/Button";
-import { useNavigation, useRoute } from "@react-navigation/native";
+} from './styles';
+import { Button } from '../../components/Button';
 
-import { getCarAccessoryIcon } from "../../utils/getCarAccesoryIcon";
-import {
-  CarDetailsRouteProp,
-  CarDetailsScreenProps,
-} from "../../routes/interfaces";
+import { getCarAccessoryIcon } from '../../utils/getCarAccesoryIcon';
+import { CarDetailsRouteProp, CarDetailsScreenProps } from '../../routes/interfaces';
 
-export const CarDetails = () => {
+export function CarDetails() {
   const navigation = useNavigation<CarDetailsScreenProps>();
   const route = useRoute<CarDetailsRouteProp>();
 
@@ -51,25 +48,16 @@ export const CarDetails = () => {
     console.log(event.contentOffset.y);
   });
 
-  const headerStyleAnimation = useAnimatedStyle(() => {
-    return {
-      height: interpolate(
-        scrollY.value,
-        [0, 200],
-        [200, 70],
-        Extrapolate.CLAMP
-      ),
-    };
-  });
+  const headerStyleAnimation = useAnimatedStyle(() => ({
+    height: interpolate(scrollY.value, [0, 200], [200, 70], Extrapolate.CLAMP),
+  }));
 
-  const slideCarsStyleAnimation = useAnimatedStyle(() => {
-    return {
-      opacity: interpolate(scrollY.value, [0, 150], [1, 0], Extrapolate.CLAMP),
-    };
-  });
+  const slideCarsStyleAnimation = useAnimatedStyle(() => ({
+    opacity: interpolate(scrollY.value, [0, 150], [1, 0], Extrapolate.CLAMP),
+  }));
 
   const handleConfirm = () => {
-    navigation.navigate("Schedule", { car });
+    navigation.navigate('Schedule', { car });
   };
 
   const handleBack = () => {
@@ -78,11 +66,7 @@ export const CarDetails = () => {
 
   return (
     <Container>
-      <StatusBar
-        barStyle="dark-content"
-        backgroundColor="transparent"
-        translucent
-      />
+      <StatusBar barStyle="dark-content" backgroundColor="transparent" translucent />
       <Animated.View style={[headerStyleAnimation]}>
         <Header>
           <BackButton onPress={handleBack} />
@@ -100,7 +84,10 @@ export const CarDetails = () => {
           </Description>
           <Rent>
             <Period>{car.rent.period}</Period>
-            <Price>R$ {car.rent.price}</Price>
+            <Price>
+              R$
+              {car.rent.price}
+            </Price>
           </Rent>
         </Details>
 
@@ -127,4 +114,4 @@ export const CarDetails = () => {
       </Footer>
     </Container>
   );
-};
+}

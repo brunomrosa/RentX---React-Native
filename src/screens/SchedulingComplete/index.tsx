@@ -1,30 +1,26 @@
-import React from "react";
-import { StatusBar, useWindowDimensions } from "react-native";
+import React from 'react';
+import { StatusBar, useWindowDimensions } from 'react-native';
 
-import { Container, Content, Title, Message, Footer } from "./styles";
+import { useNavigation } from '@react-navigation/native';
+import { Container, Content, Title, Message, Footer } from './styles';
 
-import LogoSVG from "../../assets/logo_background_gray.svg";
-import DoneSVG from "../../assets/done.svg";
+import LogoSVG from '../../assets/logo_background_gray.svg';
+import DoneSVG from '../../assets/done.svg';
 
-import { ConfirmButton } from "../../components/ConfirmButton";
-import { useNavigation } from "@react-navigation/native";
+import { ConfirmButton } from '../../components/ConfirmButton';
 
-export const SchedulingComplete = () => {
+export function SchedulingComplete() {
   const { width } = useWindowDimensions();
 
   const navigation = useNavigation();
 
   const handleOk = () => {
-    navigation.navigate("Home" as never);
+    navigation.navigate('Home' as never);
   };
 
   return (
     <Container>
-      <StatusBar
-        translucent
-        barStyle="light-content"
-        backgroundColor="transparent"
-      />
+      <StatusBar translucent barStyle="light-content" backgroundColor="transparent" />
       <LogoSVG width={width} />
 
       <Content>
@@ -32,7 +28,7 @@ export const SchedulingComplete = () => {
         <Title>Carro Alugado!</Title>
 
         <Message>
-          {`Agora você só precisa ir\naté a concessionária da RENTX\npegar o seu automóvel.`}
+          {'Agora você só precisa ir\naté a concessionária da RENTX\npegar o seu automóvel.'}
         </Message>
       </Content>
 
@@ -41,4 +37,4 @@ export const SchedulingComplete = () => {
       </Footer>
     </Container>
   );
-};
+}

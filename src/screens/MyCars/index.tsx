@@ -1,13 +1,13 @@
-import { useNavigation } from "@react-navigation/native";
-import React, { useEffect, useState } from "react";
-import { FlatList } from "react-native";
-import { BackButton } from "../../components/BackButton";
-import { Car } from "../../components/Car";
-import { CarDTO } from "../../dtos/CarDTO";
-import { MyCarsScreenProps } from "../../routes/interfaces";
-import api from "../../services/api";
+import { useNavigation } from '@react-navigation/native';
+import React, { useEffect, useState } from 'react';
+import { FlatList } from 'react-native';
+import { AntDesign } from '@expo/vector-icons';
+import { BackButton } from '../../components/BackButton';
+import { Car } from '../../components/Car';
+import { CarDTO } from '../../dtos/CarDTO';
+import { MyCarsScreenProps } from '../../routes/interfaces';
+import api from '../../services/api';
 
-import { AntDesign } from "@expo/vector-icons";
 import {
   Container,
   Header,
@@ -22,9 +22,9 @@ import {
   CarFooterTitle,
   CarFooterPeriod,
   CarFooterDate,
-} from "./styles";
-import theme from "../../styles/theme";
-import { Load } from "../../components/Load";
+} from './styles';
+import theme from '../../styles/theme';
+import { Load } from '../../components/Load';
 
 interface CarProps {
   car: CarDTO;
@@ -34,13 +34,13 @@ interface CarProps {
   endDate: string;
 }
 
-export const MyCars = () => {
+export function MyCars() {
   const [cars, setCars] = useState<CarProps[]>([]);
   const [loading, setLoading] = useState(true);
 
   const fetchCars = async () => {
     try {
-      const response = await api.get("/schedules_byuser?user_id=1");
+      const response = await api.get('/schedules_byuser?user_id=1');
       setCars(response.data);
     } catch (error) {
       console.log(error);
@@ -60,7 +60,10 @@ export const MyCars = () => {
       <Header>
         <BackButton />
         <Title>
-          Escolha uma{"\n"}data de início e{"\n"}fim do aluguel
+          Escolha uma
+          {'\n'}
+          data de início e{'\n'}
+          fim do aluguel
         </Title>
 
         <SubTitle>Conforto, segurança e qualidade</SubTitle>
@@ -103,4 +106,4 @@ export const MyCars = () => {
       )}
     </Container>
   );
-};
+}

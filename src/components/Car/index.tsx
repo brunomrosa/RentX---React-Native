@@ -1,9 +1,9 @@
-import React from "react";
-import { RectButtonProps } from "react-native-gesture-handler";
+import React from 'react';
+import { RectButtonProps } from 'react-native-gesture-handler';
 
-import Gasoline from "../../assets/gasoline.svg";
-import { CarDTO } from "../../dtos/CarDTO";
-import { getCarAccessoryIcon } from "../../utils/getCarAccesoryIcon";
+import Gasoline from '../../assets/gasoline.svg';
+import { CarDTO } from '../../dtos/CarDTO';
+import { getCarAccessoryIcon } from '../../utils/getCarAccesoryIcon';
 
 import {
   Container,
@@ -16,13 +16,13 @@ import {
   Price,
   Type,
   CarImage,
-} from "./styles";
+} from './styles';
 
 interface Props extends RectButtonProps {
   data: CarDTO;
 }
 
-export const Car = ({ data, ...rest }: Props) => {
+export function Car({ data, ...rest }: Props) {
   const MotorIcon = getCarAccessoryIcon(data.fuel_type);
 
   return (
@@ -50,4 +50,4 @@ export const Car = ({ data, ...rest }: Props) => {
       />
     </Container>
   );
-};
+}

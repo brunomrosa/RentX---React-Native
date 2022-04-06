@@ -1,13 +1,7 @@
-import React, { useRef, useState } from "react";
-import { FlatList, View, ViewToken } from "react-native";
+import React, { useRef, useState } from 'react';
+import { FlatList, View, ViewToken } from 'react-native';
 
-import {
-  Container,
-  ImageIndex,
-  ImageIndexes,
-  CarImageWrapper,
-  CarImage,
-} from "./styles";
+import { Container, ImageIndex, ImageIndexes, CarImageWrapper, CarImage } from './styles';
 
 interface Props {
   imagesUrl: string[];
@@ -18,7 +12,7 @@ interface ChangeImageProps {
   changed: ViewToken[];
 }
 
-export const ImageSlider = ({ imagesUrl }: Props) => {
+export function ImageSlider({ imagesUrl }: Props) {
   const [currentImage, setCurrentImage] = useState(0);
 
   const indexChanged = useRef((info: ChangeImageProps) => {
@@ -46,7 +40,7 @@ export const ImageSlider = ({ imagesUrl }: Props) => {
             <CarImage source={{ uri: item }} resizeMode="contain" />
           </CarImageWrapper>
         )}
-      ></FlatList>
+      />
     </Container>
   );
-};
+}
