@@ -1,6 +1,19 @@
 {
   "compilerOptions": {
+    "experimentalDecorators": true,
     "strict": true,
+    "baseUrl": "./src",
+    "paths": {
+      "assets/*": ["./assets/*"],
+      "components/*": ["./components/*"],
+      "screens/*": ["./screens/*"],
+      "dtos/*": ["./dtos/*"],
+      "routes/*": ["./routes/*"],
+      "utils/*": ["./utils/*"],
+      "styles/*": ["./styles/*"],
+      "services/*": ["./services/*"],
+    }
   },
+  
   "extends": "expo/tsconfig.base"
 }

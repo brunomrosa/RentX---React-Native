@@ -2,12 +2,14 @@ import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
 import { FlatList } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
-import { BackButton } from '../../components/BackButton';
-import { Car } from '../../components/Car';
-import { CarDTO } from '../../dtos/CarDTO';
-import { MyCarsScreenProps } from '../../routes/interfaces';
-import api from '../../services/api';
 
+import { BackButton } from 'components/BackButton';
+import { Car } from 'components/Car';
+import { CarDTO } from 'dtos/CarDTO';
+import { MyCarsScreenProps } from 'routes/interfaces';
+import api from 'services/api';
+
+import { LoadAnimation } from 'components/LoadAnimation';
 import {
   Container,
   Header,
@@ -34,7 +36,7 @@ interface CarProps {
   endDate: string;
 }
 
-export function MyCars() {
+export const MyCars = () => {
   const [cars, setCars] = useState<CarProps[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -69,7 +71,7 @@ export function MyCars() {
         <SubTitle>Conforto, segurança e qualidade</SubTitle>
       </Header>
       {loading ? (
-        <Load />
+        <LoadAnimation />
       ) : (
         <Content>
           <Appointments>
@@ -106,4 +108,4 @@ export function MyCars() {
       )}
     </Container>
   );
-}
+};

@@ -24,7 +24,8 @@ export const CarImages = styled(Animated.View)`
 
 export const Content = styled(Animated.ScrollView).attrs({
   contentContainerStyle: {
-    padding: 24,
+    paddingHorizontal: 24,
+    paddingTop: getStatusBarHeight() + 160,
     alignItems: 'center',
   },
   showsVerticalScrollIndicator: false,

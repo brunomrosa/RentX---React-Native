@@ -6,6 +6,11 @@ import { RFValue } from 'react-native-responsive-fontsize';
 import { useTheme } from 'styled-components';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { format } from 'date-fns';
+import { Button } from 'components/Button';
+import { SchedulingDetailsRouteProp, SchedulingDetailsScreenProps } from 'routes/interfaces';
+import { getCarAccessoryIcon } from 'utils/getCarAccesoryIcon';
+import { getPlataformDate } from 'utils/getPlataformDate';
+import api from 'services/api';
 import { BackButton } from '../../components/BackButton';
 import { ImageSlider } from '../../components/ImageSlider';
 import { Accessory } from '../../components/Accessory';
@@ -42,19 +47,14 @@ import {
   RentalPriceQuota,
   RentalPriceTotal,
 } from './styles';
-import { Button } from '../../components/Button';
-import { SchedulingDetailsRouteProp, SchedulingDetailsScreenProps } from '../../routes/interfaces';
-import { getCarAccessoryIcon } from '../../utils/getCarAccesoryIcon';
-import { getPlataformDate } from '../../utils/getPlataformDate';
-import api from '../../services/api';
 
-interface RentalPeriod {
+interface RentalPeriodType {
   start: string;
   end: string;
 }
 
-export function SchedulingDetails() {
-  const [rentalPeriod, setRentalPeriod] = useState<RentalPeriod>({} as RentalPeriod);
+export const SchedulingDetails = () => {
+  const [rentalPeriod, setRentalPeriod] = useState<RentalPeriodType>({} as RentalPeriodType);
 
   const [loading, setLoading] = useState(false);
 
@@ -159,7 +159,7 @@ export function SchedulingDetails() {
         <RentalPrice>
           <RentalPriceLabel>TOTAL</RentalPriceLabel>
           <RentalPriceDetails>
-            <RentalPriceQuota>{`R$ ${car.rent.price} x${dates.length} diárias`}</RentalPriceQuota>
+            <RentalPriceQuota>{`R$ ${car.rent.price} x ${dates.length} diárias`}</RentalPriceQuota>
             <RentalPriceTotal>
               R$
               {rentTotal}
@@ -177,4 +177,4 @@ export function SchedulingDetails() {
       </Footer>
     </Container>
   );
-}
+};

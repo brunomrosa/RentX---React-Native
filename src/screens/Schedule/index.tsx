@@ -3,8 +3,8 @@ import { StatusBar } from 'react-native';
 
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { format } from 'date-fns';
-import { BackButton } from '../../components/BackButton';
-import ArrowSvg from '../../assets/arrow.svg';
+import { BackButton } from 'components/BackButton';
+import ArrowSvg from 'assets/arrow.svg';
 
 import {
   Container,
@@ -18,12 +18,12 @@ import {
   Footer,
 } from './styles';
 
-import { Button } from '../../components/Button';
-import { Calendar, DayProps, MarkedDateProps } from '../../components/Calendar';
-import { generateInterval } from '../../components/Calendar/generateInterval';
-import { getPlataformDate } from '../../utils/getPlataformDate';
+import { Button } from 'components/Button';
+import { Calendar, DayProps, MarkedDateProps } from 'components/Calendar';
+import { generateInterval } from 'components/Calendar/generateInterval';
+import { getPlataformDate } from 'utils/getPlataformDate';
 
-import { ScheduleRouteProp, ScheduleScreenProps } from '../../routes/interfaces';
+import { ScheduleRouteProp, ScheduleScreenProps } from 'routes/interfaces';
 
 interface RentalPeriod {
   startFormatted: string;

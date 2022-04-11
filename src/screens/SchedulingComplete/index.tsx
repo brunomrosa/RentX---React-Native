@@ -4,10 +4,10 @@ import { StatusBar, useWindowDimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Container, Content, Title, Message, Footer } from './styles';
 
-import LogoSVG from '../../assets/logo_background_gray.svg';
-import DoneSVG from '../../assets/done.svg';
+import LogoSVG from 'assets/logo_background_gray.svg';
+import DoneSVG from 'assets/done.svg';
 
-import { ConfirmButton } from '../../components/ConfirmButton';
+import { ConfirmButton } from 'components/ConfirmButton';
 
 export function SchedulingComplete() {
   const { width } = useWindowDimensions();

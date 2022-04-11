@@ -9,11 +9,11 @@ import Animated, {
   Extrapolate,
 } from 'react-native-reanimated';
 import { useNavigation } from '@react-navigation/native';
-import BrandSvg from '../../assets/brand.svg';
-import LogoSvg from '../../assets/logo.svg';
+import BrandSvg from 'assets/brand.svg';
+import LogoSvg from 'assets/logo.svg';
 
 import { Container } from './styles';
-import { SplashScreenProps } from '../../routes/interfaces';
+import { SplashScreenProps } from 'routes/interfaces';
 
 export function Splash() {
   const splashAnimation = useSharedValue(0);
