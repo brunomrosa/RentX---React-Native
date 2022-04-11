@@ -70,7 +70,6 @@ export const SchedulingDetails = () => {
   const handleConfirmSchedule = async () => {
     setLoading(true);
     const schedulesByCar = await api.get(`/schedules_bycars/${car.id}`);
-    console.log(schedulesByCar.data);
 
     const unavailable_dates = [...schedulesByCar.data.unavailable_dates, ...dates];
 
